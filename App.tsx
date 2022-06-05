@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text, Button, View, StyleSheet, Linking } from 'react-native';
 import * as ExpoLinking from 'expo-linking';
-import * as WebBrowser from 'expo-web-browser';
+import * as ExpoWebBrowser from 'expo-web-browser';
 import Constants from 'expo-constants';
 
 export default class App extends Component {
@@ -12,24 +12,24 @@ export default class App extends Component {
         <Text>In poc-iam-smart-onlineservice-app-reactnative</Text>
 
         <Button
-          title="Open iAM Smart Mobile App with Expo ReactNative.Linking Expo"
-          onPress={this._handleOpenWithLinkingExpo}
+          title="Open iAM Smart Mobile App with Expo ReactNative.Linking Expo URL"
+          onPress={this._handleOpenWithExpoLinkingExpoURL}
           style={styles.button}
         />
         <Button
-          title="Open iAM Smart Mobile App with Expo ReactNative.Linking EAS"
-          onPress={this._handleOpenWithLinkingEAS}
+          title="Open iAM Smart Mobile App with Expo ReactNative.Linking EAS URL"
+          onPress={this._handleOpenWithExpoLinkingEasURL}
           style={styles.button}
         />
         <Button
-          title="Open iAM Smart Mobile App with Expo.WebBrowser Expo"
-          onPress={this._handleOpenWithWebBrowserExpo}
+          title="Open iAM Smart Mobile App with Expo.WebBrowser Expo URL"
+          onPress={this._handleOpenWithExpoWebBrowserExpoURL}
           style={styles.button}
         />
 
         <Button
-          title="Open iAM Smart Mobile App with Expo.WebBrowser EAS"
-          onPress={this._handleOpenWithWebBrowserEAS}
+          title="Open iAM Smart Mobile App with Expo.WebBrowser EAS URL"
+          onPress={this._handleOpenWithExpoWebBrowserEasURL}
           style={styles.button}
         />
       </View>
@@ -41,20 +41,20 @@ export default class App extends Component {
   _expoRedirectURL = "https://mediconcen.com/poc-iam-smart/poc-iam-smart-html/call-poc-iam-smart-mobile-app-reactnative_expo.html";
   _easRedirectURL = "https://mediconcen.com/poc-iam-smart/poc-iam-smart-html/call-poc-iam-smart-mobile-app-reactnative_eas.html";
 
-  _handleOpenWithLinkingExpo = () => {
+  _handleOpenWithExpoLinkingExpoURL = () => {
     ExpoLinking.openURL(this._expoAppURL);
   };
 
-  _handleOpenWithLinkingEAS = () => {
+  _handleOpenWithExpoLinkingEasURL = () => {
     ExpoLinking.openURL(this._easAppURL);
   };
 
-  _handleOpenWithWebBrowserExpo = () => {
-    WebBrowser.openBrowserAsync(this._expoRedirectURL);
+  _handleOpenWithExpoWebBrowserExpoURL = () => {
+    ExpoWebBrowser.openBrowserAsync(this._expoRedirectURL);
   };
 
-  _handleOpenWithWebBrowserEAS = () => {
-    WebBrowser.openBrowserAsync(this._easRedirectURL);
+  _handleOpenWithExpoWebBrowserEasURL = () => {
+    ExpoWebBrowser.openBrowserAsync(this._easRedirectURL);
   };
 }
 
