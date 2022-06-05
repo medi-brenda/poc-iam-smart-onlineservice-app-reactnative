@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Text, Button, View, StyleSheet } from 'react-native';
-import * as Linking from 'expo-linking';
+import { Text, Button, View, StyleSheet, Linking } from 'react-native';
+import * as ExpoLinking from 'expo-linking';
 import * as WebBrowser from 'expo-web-browser';
 import Constants from 'expo-constants';
 
@@ -12,12 +12,12 @@ export default class App extends Component {
         <Text>In poc-iam-smart-onlineservice-app-reactnative</Text>
 
         <Button
-          title="Open iAM Smart Mobile App with ReactNative.Linking Expo"
+          title="Open iAM Smart Mobile App with Expo ReactNative.Linking Expo"
           onPress={this._handleOpenWithLinkingExpo}
           style={styles.button}
         />
         <Button
-          title="Open iAM Smart Mobile App with ReactNative.Linking EAS"
+          title="Open iAM Smart Mobile App with Expo ReactNative.Linking EAS"
           onPress={this._handleOpenWithLinkingEAS}
           style={styles.button}
         />
@@ -36,20 +36,25 @@ export default class App extends Component {
     );
   }
 
+  _expoAppURL = "exp://exp.host/@medibrenda/poc-iam-smart-mobile-app-reactnative?release-channel=default";
+  _easAppURL = "exp+poc-iam-smart-mobile-app-reactnative://expo-development-client/?url=https%3A%2F%2Fu.expo.dev%2Fb2ba2f78-fe71-4ff2-a396-19670984818b%3Fchannel-name%3Dmain";
+  _expoRedirectURL = "https://mediconcen.com/poc-iam-smart/poc-iam-smart-html/call-poc-iam-smart-mobile-app-reactnative_expo.html";
+  _easRedirectURL = "https://mediconcen.com/poc-iam-smart/poc-iam-smart-html/call-poc-iam-smart-mobile-app-reactnative_eas.html";
+
   _handleOpenWithLinkingExpo = () => {
-    Linking.openURL('exp://exp.host/@medibrenda/poc-iam-smart-mobile-app-reactnative?release-channel=default');
+    ExpoLinking.openURL(this._expoAppURL);
   };
 
   _handleOpenWithLinkingEAS = () => {
-    Linking.openURL('exp+poc-iam-smart-mobile-app-reactnative://expo-development-client/?url=https%3A%2F%2Fu.expo.dev%2Fb2ba2f78-fe71-4ff2-a396-19670984818b%3Fchannel-name%3Dmain');
+    ExpoLinking.openURL(this._easAppURL);
   };
 
   _handleOpenWithWebBrowserExpo = () => {
-    WebBrowser.openBrowserAsync('https://mediconcen.com/poc-iam-smart/poc-iam-smart-html/call-poc-iam-smart-mobile-app-reactnative_expo.html');
+    WebBrowser.openBrowserAsync(this._expoRedirectURL);
   };
 
   _handleOpenWithWebBrowserEAS = () => {
-    WebBrowser.openBrowserAsync('https://mediconcen.com/poc-iam-smart/poc-iam-smart-html/call-poc-iam-smart-mobile-app-reactnative_eas.html');
+    WebBrowser.openBrowserAsync(this._easRedirectURL);
   };
 }
 
