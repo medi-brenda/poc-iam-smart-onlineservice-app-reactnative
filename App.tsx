@@ -9,6 +9,8 @@ const easAppURL = "exp+poc-iam-smart-mobile-app-reactnative://expo-development-c
 const expoRedirectURL = "https://mediconcen.com/poc-iam-smart/poc-iam-smart-html/call-poc-iam-smart-mobile-app-reactnative_expo.html";
 const easRedirectURL = "https://mediconcen.com/poc-iam-smart/poc-iam-smart-html/call-poc-iam-smart-mobile-app-reactnative_eas.html";
 
+const iamSmartURLScheme = "hk.gov.iamsmart.testapp://auth?ticketID=123";
+
 // React Native Linking
 const OpenURLButton = ({ url, children }) => {
   const handlePress = useCallback(async () => {
@@ -36,6 +38,7 @@ export default class App extends Component {
 
         <OpenURLButton url={expoAppURL}>Open iAM Smart Mobile App with Bare ReactNative.Linking Expo URL</OpenURLButton>
         <OpenURLButton url={easAppURL}>Open iAM Smart Mobile App with Bare ReactNative.Linking EAS URL</OpenURLButton>
+        <OpenURLButton url={iamSmartURLScheme}>Open Testing iAM Smart Mobile App with Bare ReactNative.Linking</OpenURLButton>
 
         <Button
           title="Open iAM Smart Mobile App with Expo ReactNative.Linking Expo URL"
@@ -45,6 +48,11 @@ export default class App extends Component {
         <Button
           title="Open iAM Smart Mobile App with Expo ReactNative.Linking EAS URL"
           onPress={this._handleOpenWithExpoLinkingEasURL}
+          style={styles.button}
+        />
+        <Button
+          title="Open Testing iAM Smart Mobile App with Expo ReactNative.Linking"
+          onPress={this._handleOpenWithExpoLinkingIAMSmartURLScheme}
           style={styles.button}
         />
 
@@ -59,6 +67,13 @@ export default class App extends Component {
           onPress={this._handleOpenWithExpoWebBrowserEasURL}
           style={styles.button}
         />
+
+        <Button
+          title="Open Testing iAM Smart Mobile App with Expo.WebBrowser"
+          onPress={this._handleOpenWithExpoLinkingIAMSmartURLScheme}
+          style={styles.button}
+        />
+
       </View>
     );
   }
@@ -71,6 +86,11 @@ export default class App extends Component {
   _handleOpenWithExpoLinkingEasURL = () => {
     ExpoLinking.openURL(easAppURL);
   };
+
+  _handleOpenWithExpoLinkingIAMSmartURLScheme = () => {
+    ExpoLinking.openURL(iamSmartURLScheme);
+  };
+
 
   // Expo Web Browser
   _handleOpenWithExpoWebBrowserExpoURL = () => {
