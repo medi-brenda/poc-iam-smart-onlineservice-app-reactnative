@@ -26,10 +26,32 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
+      "intentFilters": [
+        {
+          "action": "VIEW",
+          "autoVerify": true,
+          "data": [
+            {
+              "scheme": "hk.gov.iamsmart.testapp",
+              "host": "*",
+              "pathPrefix": "*"
+            }
+          ],
+          "category": [
+            "BROWSABLE",
+            "DEFAULT"
+          ]
+        }
+      ],
       "package": "com.medibrenda.pociamsmartonlineserviceappreactnative"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "4b77fc4f-ea89-452e-b491-d103e3cac86c"
+      }
     }
   }
 }
