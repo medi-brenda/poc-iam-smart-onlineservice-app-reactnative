@@ -1,6 +1,7 @@
 {
   "expo": {
     "name": "poc-iam-smart-onlineservice-app-reactnative",
+    "plugins": ["./plugins/withAndroidVerifiedLinksWorkaround"],
     "slug": "poc-iam-smart-onlineservice-app-reactnative",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -26,6 +27,22 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
+      "intentFilters": [
+        {
+          "action": "VIEW",
+          "autoVerify": true,
+          "data": [
+            {
+              "scheme": "hk.gov.iamsmart.testapp",
+              "host": "auth"
+            }
+          ],
+          "category": [
+            "BROWSABLE",
+            "DEFAULT"
+          ]
+        }
+      ],
       "package": "com.medibrenda.pociamsmartonlineserviceappreactnative"
     },
     "web": {
